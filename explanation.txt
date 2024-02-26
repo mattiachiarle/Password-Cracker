@@ -1,0 +1,14 @@
+For task 2, I initially thought about doing a brute-force attack that tried all the possible mappings. To highly reduce
+the number of plaintexts to manually check, I created a small dictionary with all the english words of 1 and 2
+letters and I told the program to let me evaluate only the mappings where all the words with length<=2 were contained
+in the dictionary. However, I quickly understood that this approach wouldn't have been feasible due to the high number
+of possible mappings available (26!). So, I tried an interactive approach. The idea is that humans are a lot faster than
+brute-force attacks in recognizing the possible mappings given the context. So, I hard-coded some trivial mappings
+(a, e, i. The explanation is in the code) and I manually tried to figure out the correct mapping. Thanks to some common
+patterns, like double letters or words that were probably in certain positions, after few trials I was able to break the
+cipher. To avoid confusion, initially I replaced the decoded letters with uppercase ones, so that it was clear to me
+which parts were decoded and which ones not yet. Then, I simply tested the encoded words of the dictionary. The decoding
+procedure was quite fast (45 ms), since the longest task is to actually find the mapping.
+
+While I was searching for a more efficient approach, I searched online to take inspiration from some existing solutions.
+However, none of them satisfied me and I didn't use them.

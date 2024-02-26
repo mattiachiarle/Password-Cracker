@@ -1,0 +1,23 @@
+To make the code as efficient as possible, I initially planned a precise execution order. The order of the attacks has
+been designed to perform firstly the faster ones. To perform the hash comparison, I used all the algorithms available in
+hashlib to stay safe. Then, for leet speak I designed a recursive function, that tests all the possible combinations for
+a single word (i.e., I try all the combinations when a letter is replaced and when it's not replaced). Lastly, I try
+with the salt, which is very expensive since each password is tested 100.000 times. For what concerns Caesar Cipher,
+I try for each password all the possible combinations of literal and numerical offsets. My code could be further
+optimized (for example, we could avoid the tests on numerical offset if the password doesn't contain any number), but
+since it's able to compute the result in a relatively short amount of time I didn't find it worth.
+Here you can see the decoding time for each user:
+user1 (hash): 1.1 ms
+user2 (hash): 24 ms
+user3 (Caesar): 660 ms
+user4 (leet): 940 ms
+user5 (salt): around 36.5 minutes
+user6 (hash): 5.7 ms
+
+Obviously, the time required highly depends on the position of the correct password in the dictionary. If grenoble was
+the first password, the salt attack would have taken few seconds.
+
+The main difficulties that I faced were related to cases that I didn't consider. For example, for leet speak I
+immediately decided to convert all the letters that had a mapping without considering the case in which only some of
+them were changed. This made me fail the cracking, and I figured it out after a while. Other issues were related to bugs
+accidentally inserted or programming errors.
